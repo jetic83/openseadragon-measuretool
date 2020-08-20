@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/picturae/openseadragonselection.git"
+    "url": "git+https://github.com/jetic83/openseadragon-measuretool.git"
   },
   "keywords": [
     "openseadragon",
@@ -15,11 +15,14 @@
   ],
   "author": "Peter Schueffler",
   "license": "MIT",
-  "homepage": "https://github.com/picturae/openseadragonselection#readme",
-  "dependencies": {},
+  "homepage": "https://github.com/jetic83/openseadragon-measuretool#readme",
+  "dependencies": {
+    "gulp-git": "^2.10.1"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
+    "gulp-header": "^2.0.9",
     "gulp-jshint": "^1.11.2",
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.2.1",

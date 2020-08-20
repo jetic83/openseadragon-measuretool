@@ -33,20 +33,5 @@ Then you can alter the selection state with any of these:
         startAngle: 0,
         onMeasurementCanceled:   null, // callback
         onMeasurementChanged:    null, // callback
-        onMeasurementToggled:    null, // callback
-        prefixUrl:               null, // overwrites OpenSeadragon's option
-        navImages:               {
-            measuretool: {
-                REST:   'measuretool_rest.png',
-                GROUP:  'measuretool_grouphover.png',
-                HOVER:  'measuretool_hover.png',
-                DOWN:   'measuretool_pressed.png'
-            },
-            measuretoolCancel: {
-                REST:   'measuretool_cancel_rest.png',
-                GROUP:  'measuretool_cancel_grouphover.png',
-                HOVER:  'measuretool_cancel_hover.png',
-                DOWN:   'measuretool_cancel_pressed.png'
-            },
-        }
+        onMeasurementToggled:    null // callback
     });

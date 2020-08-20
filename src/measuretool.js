@@ -47,25 +47,8 @@
             startAngle: 0,
             onMeasurementCanceled:   null,
             onMeasurementChanged:    null,
-            onMeasurementToggled:    null,
-            prefixUrl:               null,
-            navImages:               {
-                measuretool: {
-                    REST:   'measuretool_rest.png',
-                    GROUP:  'measuretool_grouphover.png',
-                    HOVER:  'measuretool_hover.png',
-                    DOWN:   'measuretool_pressed.png'
-                },
-                measuretoolCancel: {
-                    REST:   'measuretool_cancel_rest.png',
-                    GROUP:  'measuretool_cancel_grouphover.png',
-                    HOVER:  'measuretool_cancel_hover.png',
-                    DOWN:   'measuretool_cancel_pressed.png'
-                },
-            }
+            onMeasurementToggled:    null
         }, options );
-
-        $.extend( true, this.navImages, this.viewer.navImages );
 
         if (!this.element) {
             this.element = $.makeNeutralElement('div');
@@ -157,7 +140,6 @@
             );
         }
 
-        var prefix = this.prefixUrl || this.viewer.prefixUrl || '';
         var useGroup = this.viewer.buttons && this.viewer.buttons.buttons;
         var anyButton = useGroup ? this.viewer.buttons.buttons[0] : null;
         var onFocusHandler = anyButton ? anyButton.onFocus : null;
@@ -168,10 +150,6 @@
                 clickTimeThreshold: this.viewer.clickTimeThreshold,
                 clickDistThreshold: this.viewer.clickDistThreshold,
                 tooltip:    $.getString('Tooltips.MeasuretoolToggle') || 'Toggle measuretool',
-                srcRest:    prefix + this.navImages.measuretool.REST,
-                srcGroup:   prefix + this.navImages.measuretool.GROUP,
-                srcHover:   prefix + this.navImages.measuretool.HOVER,
-                srcDown:    prefix + this.navImages.measuretool.DOWN,
                 onRelease:  this.toggleState.bind( this ),
                 onFocus:    onFocusHandler,
                 onBlur:     onBlurHandler
@@ -191,10 +169,6 @@
                 clickTimeThreshold: this.viewer.clickTimeThreshold,
                 clickDistThreshold: this.viewer.clickDistThreshold,
                 tooltip:    $.getString('Tooltips.MeasuretoolConfirm') || 'Cancel measuretool',
-                srcRest:    prefix + this.navImages.measuretoolCancel.REST,
-                srcGroup:   prefix + this.navImages.measuretoolCancel.GROUP,
-                srcHover:   prefix + this.navImages.measuretoolCancel.HOVER,
-                srcDown:    prefix + this.navImages.measuretoolCancel.DOWN,
                 onRelease:  this.cancel.bind( this ),
                 onFocus:    onFocusHandler,
                 onBlur:     onBlurHandler
