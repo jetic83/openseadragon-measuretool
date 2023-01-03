@@ -3,7 +3,9 @@
   "version": "1.1.0",
   "description": "An OpenSeadragon plugin to allow measuring part of the zoomable image and displaying the corresponding length.",
   "main": "measuretool.js",
-  "scripts": {},
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jetic83/openseadragon-measuretool.git"
@@ -15,21 +17,23 @@
   ],
   "author": "Peter Schueffler",
   "license": "MIT",
-  "homepage": "https://github.com/jetic83/openseadragon-measuretool#readme",
-  "dependencies": {
-    "gulp-git": "^2.10.1"
+  "bugs": {
+    "url": "https://github.com/jetic83/openseadragon-measuretool/issues"
   },
+  "homepage": "https://github.com/jetic83/openseadragon-measuretool#readme",
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.0",
-    "gulp-header": "^2.0.9",
     "gulp-jshint": "^1.11.2",
     "gulp-load-plugins": "^0.10.0",
-    "gulp-plumber": "^1.2.1",
+    "gulp-plumber": "^1.0.1",
     "gulp-serve": "^1.2.0",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.4",
+    "gulp-uglify": "^1.4.2",
     "gulp-util": "^3.0.6",
     "jshint-stylish": "^2.0.1"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.9"
   }
 }
