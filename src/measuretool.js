@@ -225,12 +225,12 @@
         draw: function() {
             if (this.rect) {
 
-                var quadrant_tmp = this.quadrant;
+                var _quadrant = this.quadrant;
 
-                var degrees = viewer.viewport.getRotation();
+                var degrees = this.viewer.viewport.getRotation();
                 
                 if (document.getElementById('corner-0')) {
-                    switch (quadrant_tmp) {
+                    switch (_quadrant) {
                         case 0:
                             document.getElementById('corner-0').style.right = '';
                             document.getElementById('corner-1').style.left = '';
@@ -274,7 +274,7 @@
                 lineDiv.style.width = lineDivWidthNew + 'px';
                 var a = Math.atan(result.height / result.width) * (180 / Math.PI);
 
-                if (quadrant_tmp === 0 || quadrant_tmp === 2) {
+                if (_quadrant === 0 || _quadrant === 2) {
                     if (degrees >= 270) {
                         if (this.startAngle >= 270) {
                             a = 90 - a;
@@ -295,7 +295,7 @@
                     } else {
                         lineDiv.style.transform = 'translateY(' + result.height / 2 + 'px) translateX(-' + (lineDivWidthNew - result.width) / 2 + 'px) rotate(-' + a + 'deg)';
                     }
-                } else if (quadrant_tmp === 1 || quadrant_tmp === 3) {
+                } else if (_quadrant === 1 || _quadrant === 3) {
                     if (degrees >= 270) {
                         a = 90 - a;
                         lineDiv.style.transform = 'translateY(' + result.width / 2 + 'px) translateX(-' + (lineDivWidthNew - result.height) / 2 + 'px) rotate(' + a + 'deg)';
@@ -307,7 +307,7 @@
                     } else {
                         lineDiv.style.transform = 'translateY(' + result.height / 2 + 'px) translateX(-' + (lineDivWidthNew - result.width) / 2 + 'px) rotate(' + a + 'deg)';
                     }
-                } /*else if (quadrant_tmp === 2) {
+                } /*else if (_quadrant === 2) {
                     if (degrees >= 270) {
                         if (this.startAngle >= 270) {
                             a = 90 - a;
@@ -328,7 +328,7 @@
                     } else {
                         lineDiv.style.transform = 'translateY(' + result.height / 2 + 'px) translateX(-' + (lineDivWidthNew - result.width) / 2 + 'px) rotate(-' + a + 'deg)';
                     }
-                } else if (quadrant_tmp === 3) {
+                } else if (_quadrant === 3) {
                     if (degrees >= 270) {
                         a = 90 - a;
                         lineDiv.style.transform = 'translateY(' + result.width / 2 + 'px) translateX(-' + (lineDivWidthNew - result.height) / 2 + 'px) rotate(' + a + 'deg)';
@@ -377,7 +377,7 @@
             var currentPPM = zoom * this.pixelsPerMeter;
             var text = getRoundedWithUnit(pixelLength / currentPPM, 2, 'm');
             infoDiv.innerHTML = text;
-            var degrees = viewer.viewport.getRotation();
+            var degrees = this.viewer.viewport.getRotation();
             infoDiv.style.transform = 'rotate(-' + degrees + 'deg)';
         }
 
@@ -393,7 +393,7 @@
         var delta = this.viewer.viewport.deltaPointsFromPixels(e.delta, true);
         var end = this.viewer.viewport.pointFromPixel(e.position, true);
         var start = new $.Point(end.x - delta.x, end.y - delta.y);
-        var degrees = viewer.viewport.getRotation();
+        var degrees = this.viewer.viewport.getRotation();
         this.startAngle = degrees;
         if (!this.rect) {
             if (this.startRotated) {
@@ -443,7 +443,7 @@
     function onCornerDrag(corner, e) {
         var delta = e.delta;
         var rotation = this.rect.getDegreeRotation();
-        var degrees = viewer.viewport.getRotation();
+        var degrees = this.viewer.viewport.getRotation();
         this.startAngle = degrees;
         var center;
         if (rotation !== 0) {
@@ -502,7 +502,7 @@
     }
 
 
-    function onCornerDragEnd(corner, e) {
+    function onCornerDragEnd(corner) {
         if (corner === 0) {
             this.switched = this.quadrant === 0 || this.quadrant === 1;
         }
