@@ -375,7 +375,7 @@
             var viewport = this.viewer.viewport;
             var zoom = this.viewer.world.getItemAt(0).viewportToImageZoom(viewport.getZoom(true));
             var currentPPM = zoom * this.pixelsPerMeter;
-            var text = getRoundedWithUnit(pixelLength / currentPPM, 2, 'm');
+            var text = getRoundedWithUnitCM(pixelLength / currentPPM, 'm');
             infoDiv.innerHTML = text;
             var degrees = this.viewer.viewport.getRotation();
             infoDiv.style.transform = 'rotate(-' + degrees + 'deg)';
@@ -548,44 +548,9 @@
         return rect;
     }
 
-    
-
-    function getWithUnit(value, unitSuffix) {
-        if (value < 0.000001) {
-            return value * 1000000000 + ' n' + unitSuffix;
-        }
-        if (value < 0.00001) { // mm measure up to 10 micrometer, then micrometer measure.
-            return value * 1000000 + ' μ' + unitSuffix;
-        }
-        if (value < 1) {
-            return value * 1000 + ' m' + unitSuffix;
-        }
-        if (value >= 1000) {
-            return value / 1000 + ' k' + unitSuffix;
-        }
-        return value + ' ' + unitSuffix;
-    }
-
-    function getRoundedWithUnit(value, sig, unitSuffix) {
-        if (sig < 0) {
-            return getWithUnit(value, unitSuffix);
-        }
-
-        var factor = Math.pow(10, sig);
-
-        if (value < 0.000001) {
-            return Math.round(factor * value * 1000000000) / factor + ' n' + unitSuffix;
-        }
-        if (value < 0.00001) { // mm measure up to 10 micrometer, then micrometer measure.
-            return Math.round(factor * value * 1000000) / factor + ' μ' + unitSuffix;
-        }
-        if (value < 1) {
-            return Math.round(factor * value * 1000) / factor + ' m' + unitSuffix;
-        }
-        if (value >= 1000) {
-            return Math.round(factor * value / 1000) / factor + ' k' + unitSuffix;
-        }
-        return Math.round(factor * value) / factor + ' ' + unitSuffix;
+    function getRoundedWithUnitCM(value, unitSuffix) {
+        var factor = value < 0.0001 ? Math.pow(10, 3) : Math.pow(10, 2);
+        return Math.round(factor * value * 100) / factor + ' c' + unitSuffix;
     }
 
 
